@@ -1,0 +1,27 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Tests
+.pytest_cache/
+
+# Env / secrets  (copy .env.example -> .env and fill in locally)
+.env
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Local deploy state (machine-specific resource IDs)
+.agent_engine
+.ops_mcp_url
+
+# OS
+.DS_Store
+
+# ADK dev-UI runtime state (adk web writes this next to the agent)
+.adk/
+*.session.db

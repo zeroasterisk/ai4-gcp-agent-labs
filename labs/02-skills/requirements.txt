@@ -1,0 +1,13 @@
+# Lab 02 — Skills (Skill Registry + ADK SkillToolset). Verified 2026-07-17:
+#   google-adk 2.4.0 (skill_toolset + integrations.skill_registry), google-cloud-aiplatform 1.161.0.
+# Install with: uv pip install -r requirements.txt (behind a corporate mirror, first run:
+#   export UV_DEFAULT_INDEX=https://pypi.org/simple)
+google-adk>=2.4,<3
+# The agentplatform SDK (client.skills) ships in google-cloud-aiplatform >= 1.154.
+google-cloud-aiplatform[adk,agent_engines]>=1.154,<2  # <2: guard against aiplatform 2.x (2.0.0 exists on PyPI, currently yanked)
+mcp>=1.24,<2   # local stdio MCP baseline (carried from Lab 01; migrates to Cloud Run in Lab 03); <2 because mcp 2.0.0 is API-incompatible
+# src/nimbus/agent/schemas.py imports pydantic directly (it also arrives
+# transitively with google-adk; declared so this lab stands alone).
+pydantic>=2,<3
+# test tooling
+pytest>=8

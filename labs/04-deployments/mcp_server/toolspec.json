@@ -1,0 +1,30 @@
+{
+  "tools": [
+    {
+      "name": "list_services",
+      "description": "List the Cymbal services you can observe.",
+      "inputSchema": {"type": "object", "properties": {}, "required": []}
+    },
+    {
+      "name": "get_service_health",
+      "description": "Get the current health summary for one Cymbal service.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {"service": {"type": "string", "description": "service name, e.g. checkout"}},
+        "required": ["service"]
+      }
+    },
+    {
+      "name": "get_error_rate",
+      "description": "Get the error rate and severity for a service over a time window.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service": {"type": "string", "description": "service name, e.g. checkout"},
+          "window": {"type": "string", "description": "look-back window, e.g. 1h"}
+        },
+        "required": ["service"]
+      }
+    }
+  ]
+}

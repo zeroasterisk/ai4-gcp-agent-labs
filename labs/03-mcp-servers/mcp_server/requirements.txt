@@ -1,0 +1,11 @@
+# Cymbal Ops MCP server deps (verified: mcp 1.x, starlette 1.3.1, uvicorn 0.51.0 on 2026-07-16)
+mcp>=1.24,<2  # <2: mcp 2.0.0 is API-incompatible (no mcp.shared.session / mcp.server.fastmcp)
+starlette>=0.37
+uvicorn>=0.30
+# OpenTelemetry -> Cloud Trace (Lab 15 Topology): continue the caller's W3C trace so the MCP spans
+# join Nimbus's trace and the Topology edge can be drawn. Best-effort import in server.py.
+opentelemetry-sdk>=1.27,<2
+opentelemetry-exporter-gcp-trace>=1.7
+# GCP resource detection so spans carry the Cloud Run service identity (faas.name/cloud.platform) →
+# lets the Topology graph map MCP spans to the registered Cloud Run MCP node (F-036 follow-up).
+opentelemetry-resourcedetector-gcp>=1.7

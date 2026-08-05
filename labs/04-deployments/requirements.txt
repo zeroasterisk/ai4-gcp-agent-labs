@@ -1,0 +1,12 @@
+# Lab 04 — deploy the Nimbus GRAPH (managed skills + managed MCP) to Agent Runtime.
+google-adk[agent-identity,a2a]>=2.4,<3
+# >=1.154 provides the agentplatform SDK (client.skills) for the carried-forward Skill Registry.
+google-cloud-aiplatform[adk,agent_engines]>=1.154,<2  # <2: guard against aiplatform 2.x (2.0.0 exists on PyPI, currently yanked)
+mcp>=1.24,<2  # <2: mcp 2.0.0 is API-incompatible (no mcp.shared.session / mcp.server.fastmcp)
+# mcp_server/server.py (loaded by the offline tests) imports these directly.
+# They also arrive transitively today; declaring them keeps this lab self-sufficient.
+starlette>=0.37
+uvicorn>=0.30
+# deploy.py ships the graph: registers nimbus modules by value + packs the package as source.
+cloudpickle
+pytest>=8
